@@ -22,11 +22,14 @@ const forecast = (lat, lon, callback)=>{
         if(body.error)
             return callback(body.error.info)
     
+        console.log(body.current)
+
         return callback(
             undefined,
             `${body.current.weather_descriptions[0]}. ` + 
-            `Today's temperature is ${body.current.temperature}F. ` + 
-            `Feels like ${body.current.feelslike}F`
+            `Today's temperature is ${body.current.temperature}°F, ` + 
+            `Feels like ${body.current.feelslike}°F — ` +
+            `Wind speeds of ${body.current.wind_speed} mph at ${body.current.wind_degree}°`
         )
     })
 }
